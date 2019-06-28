@@ -90,7 +90,6 @@
 \usepackage{morewrites}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \usepackage[resetlabels]{multibib}
-\usepackage[numbers,sort&compress]{natbib}
 
 %标题
 \usepackage{caption}
@@ -109,6 +108,218 @@ endofdump
 
 %代码
 \usepackage{minted}
+\usepackage{boxie}
+\makeatletter
+\xdefinecolor{tcbcol@back}{rgb}{0,0,0}
+\makeatother
+\usepackage{tikz}
+%%MatLab命令行
+\newcommand{\MatlabLogo}{%
+	\begin{tikzpicture}[x=2.4ex,y=2.4ex,line width=0ex,scale=1]
+		\node[draw,fill=white,text=white] at (0, 0) (a) {
+				\includegraphics[width=2.4ex]{matlabLogo.ai}
+			};
+	\end{tikzpicture}
+}
+\tcbset{%
+	skin=enhanced,%
+	matlab/.style={%
+		skin=bicolor,%
+		boxrule=0.1mm,%
+		%toptitle=1ex,
+		sharp corners,
+		breakable,%
+		colbacktitle=WinGray,%
+		colframe=WinGray,%
+		coltitle=black,%
+		fonttitle=\sffamily,%\bfseries,
+		fontupper=\small\sffamily,
+		fontlower=\small\sffamily,
+		frame style={%
+			draw=WinBlue,%
+			left color=WinBlue,%
+			right color=WinBlue%
+		},%
+		overlay unbroken = {%
+			\node[inner sep=0pt,anchor=north west,yshift=-3pt,xshift=1.2pt,text=black]
+			at (frame.north west){\MatlabLogo};% \fbox{\faTerminal}
+			\node[inner sep=0pt,anchor=north east,yshift=-3pt,xshift=-8pt,text=black] at (frame.north
+			east){\rule{0.8em}{0.6pt}\quad$\square$\quad{\Large$\times$}};
+		},%
+		overlay first = {%
+			\node[inner sep=0pt,anchor=north west,yshift=-3pt,xshift=1.0pt,text=black]
+			at (frame.north west){\MatlabLogo};%\small ~\faWindows
+			\node[inner sep=0pt,anchor=north east,yshift=-3pt,xshift=-8pt,text=black] at (frame.north
+			east){\rule{0.8em}{0.6pt}\quad$\square$\quad{\Large$\times$}};
+		}%
+	},
+	matlablight/.style={
+		matlab,%
+		colback=white,%
+		colupper=black,%
+		%coltext=black%
+	},
+	matlabdark/.style={
+		matlab,%
+		colback=black,%
+		colupper=white,%
+		%coltext=white%
+	}
+}
+\DeclareTCBListing{matlabdarkc}{ m m }{%
+	listing engine=minted,%
+	minted style=trac,%
+	minted options={%
+		autogobble,%
+		breaklines,%
+		fontsize=\wuhao,%
+		baselinestretch=0.6,%
+		breaksymbolleft={},%
+		numbersep=3mm%
+	},%
+	listing and comment,%
+	colbacklower=tcbcol@back!5!yellow!10!white,%
+	collower=linux,%
+	matlabdark,%
+	title={#2},%
+	comment={\small\sffamily#1},%
+	minted language=bat%
+}
+\DeclareTCBListing{matlablightc}{ m m }{%
+	listing engine=minted,%
+	minted style=trac,%
+	minted options={%
+		autogobble,%
+		breaklines,%
+		fontsize=\wuhao,%
+		baselinestretch=0.6,%
+		breaksymbolleft={},%
+		numbersep=3mm%
+	},%
+	listing and comment,%
+	colbacklower=tcbcol@back!5!yellow!10!white,%
+	collower=linux,%
+	matlablight,%
+	title={#2},%
+	comment={\small\sffamily#1},%
+	minted language=bat%
+}
+\DeclareTCBListing{matlabdark}{ m }{%
+	listing engine=minted,%
+	minted style=trac,%
+	minted options={%
+		autogobble,%
+		breaklines,%
+		fontsize=\wuhao,%
+		baselinestretch=0.6,%
+		breaksymbolleft={},%
+		numbersep=3mm%
+	},%
+	listing only,%
+	matlabdark,%
+	title={#1},%
+	minted language=bat%
+}
+\DeclareTCBListing{matlablight}{ m }{%
+	listing engine=minted,%
+	minted style=trac,%
+	minted options={%
+		autogobble,%
+		breaklines,%
+		fontsize=\wuhao,%
+		baselinestretch=0.6,%
+		breaksymbolleft={},%
+		numbersep=3mm%
+	},%
+	listing only,%
+	matlablight,%
+	title={#1},%
+	minted language=bat%
+}
+\newtcbinputlisting{\matlabdarkcfile}[3]{%
+	listing engine=minted,%
+	minted style=trac,%
+	minted options={%
+		autogobble,%
+		breaklines,%
+		fontsize=\wuhao,%
+		baselinestretch=0.6,%
+		breaksymbolleft={},%
+		numbersep=3mm%
+	},%
+	listing and comment,%
+	colbacklower=tcbcol@back!5!yellow!10!white,%
+	collower=linux,%
+	matlabdark,%
+	listing file={#3},
+	title={#2},%
+	comment={\small\sffamily#1},%
+	minted language=bat%
+}% end matlabdarkcfile
+% 将文件做为窗口内容的Windows终端窗口样式命令
+% 第1个参数是窗口底端提示信息
+% 第2个参数是窗口标题
+% 第3个参数是包含窗口内容的文件全路径名称(可以是相对路径)
+\newtcbinputlisting{\matlablightcfile}[3]{%
+	listing engine=minted,%
+	minted style=trac,%
+	minted options={%
+		autogobble,%
+		breaklines,%
+		fontsize=\wuhao,%
+		baselinestretch=0.6,%
+		breaksymbolleft={},%
+		numbersep=3mm%
+	},%
+	listing and comment,%
+	colbacklower=tcbcol@back!5!yellow!10!white,%
+	collower=linux,%
+	matlablight,%
+	listing file={#3},
+	title={#2},%
+	comment={\small\sffamily#1},%
+	minted language=bat%
+}% end matlablightcfile
+% 将文件做为窗口内容的Windows终端窗口样式命令
+% 第1个参数是窗口标题
+% 第2个参数是包含窗口内容的文件全路径名称(可以是相对路径)
+\newtcbinputlisting{\matlabdarkfile}[2]{%
+	listing engine=minted,%
+	minted style=trac,%
+	minted options={%
+		autogobble,%
+		breaklines,%
+		fontsize=\wuhao,%
+		baselinestretch=0.6,%
+		breaksymbolleft={},%
+		numbersep=3mm%
+	},%
+	listing only,%
+	matlabdark,%
+	listing file={#2},
+	title={#1},%
+	minted language=bat%
+}% end matlabdarkfile
+% 将文件做为窗口内容的Windows终端窗口样式命令
+% 第1个参数是窗口标题
+% 第2个参数是包含窗口内容的文件全路径名称(可以是相对路径)
+\newtcbinputlisting{\matlablightfile}[2]{%
+	listing engine=minted,%
+	minted style=trac,%
+	minted options={%
+		autogobble,%
+		breaklines,%
+		fontsize=\wuhao,%
+		baselinestretch=0.6,%
+		breaksymbolleft={},%
+		numbersep=3mm%
+	},%
+	listing only,%
+	matlablight,%
+	listing file={#2},
+	title={#1},%
+	minted language=bat%
+}% end matlablightfile
 
 %链接%与beamer 冲突
 \usepackage
@@ -178,6 +389,7 @@ backref=page
 \subsection{问题背景}%
 \label{sub:问题背景}
 
+\cite{巩慧琴2012高铁时代下旅客交通工具选择行为研究}
 \subsection{问题信息}%
 \label{sub:问题信息}
 
@@ -262,7 +474,7 @@ backref=page
 % Fakesection 参考文献
 
 \bibliographystyle{IEEEtran}
-%\bibliography{src/main}
+\bibliography{src/main}
 
 % Fakesection 附录
 
@@ -275,6 +487,15 @@ backref=page
 
 \section{代码}%
 \label{sec:代码}
+
+\langCVfile[Matlab][code:R.m][Matlab]{R.m}{src/R.m}
+
+\begin{figure}[htpb]
+	\centering
+	\matlablightfile{MATLAB Command Window}{src/R.txt}
+	\caption{运行界面}
+	\label{fig:运行界面}
+\end{figure}
 
 % Fakesection 索引
 
