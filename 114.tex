@@ -1,0 +1,284 @@
+% Fakesection 序言之前
+
+\RequirePackage[l2tabu, orthodox]{nag}
+\RequirePackage{ifxetex}
+\RequireXeTeX
+
+\documentclass{ctexart}
+
+%颜色
+\usepackage{xcolor}
+
+%长度
+\usepackage{printlen}
+\uselengthunit{mm}
+
+%图形
+\usepackage{pifont}
+\usepackage{ean13isbn}
+\usepackage{qrcode}
+\usepackage{pdfpages}
+\usepackage{overpic}
+\usepackage{graphicx}
+\graphicspath{{./src/}}
+\usepackage{media9}
+\usepackage{wallpaper}
+\usepackage{wrapfig}
+
+%表格
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{fancybox}
+\usepackage{colortbl}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+\tcbuselibrary{theorems}
+\tcbuselibrary{listings}
+\tcbuselibrary{xparse}
+\tcbuselibrary{minted}% 用minted排版代码
+\usepackage{fvextra}
+\usepackage{csvsimple}
+\usepackage{boxedminipage2e}
+
+%公式
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{amsopn}
+\usepackage{amstext}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{textcomp}
+\usepackage{latexsym}
+\usepackage{exscale}
+\usepackage{relsize}
+%\usepackage{xymtex}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{hologo}
+\usepackage{cases}
+
+%文字
+\usepackage{csquotes}
+\usepackage{microtype}
+
+%正文
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{lastpage}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\renewcommand\arraystretch{1.5}
+
+%非正文
+\usepackage{makeidx}
+\makeindex
+\usepackage{epigraph}
+\usepackage{varwidth}
+\usepackage{exercise}
+\usepackage{tasks}
+
+%参考文献
+\usepackage{morewrites}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage[resetlabels]{multibib}
+\usepackage[numbers,sort&compress]{natbib}
+
+%标题
+\usepackage{caption}
+\usepackage{subcaption}
+\DeclareCaptionLabelFormat{andtable}%
+{#1#2~\&~\tablename\thetable}
+\newcounter{sub}
+
+%其它
+\usepackage{atbegshi}
+\usepackage{lipsum}
+
+\csname
+endofdump
+\endcsname
+
+%代码
+\usepackage{minted}
+
+%链接%与beamer 冲突
+\usepackage
+[	colorlinks = true,
+linkcolor = gray,
+citecolor = gray,
+backref=page
+]{hyperref}
+
+%枚举%与beamer 干涉
+\usepackage{enumitem}
+\setlist[enumerate, 2]
+{	fullwidth,
+	label = \alph*.,
+	font = \textup,
+	itemindent=2em
+}
+
+%标题%与beamer 冲突
+\usepackage{titlesec}
+%\titleformat{\chapter}{\centering\Huge\bfseries}{实验\chinese{chapter}~}{0pt}{}
+\titleformat{\section}{\centering\LARGE\bfseries}{\S\ifthenelse{\value{section}=0}{}{\thesection}~}{0pt}{}
+%\titleformat{\subsection}{\Large}{\chinese{subsection}、~}{0pt}{}
+%\titleformat{\subsubsection}{\large}{\arabic{subsubsection}.~}{0pt}{}
+
+\begin{document}
+
+% Fakesection 摘要
+
+\title{\textbf{乘坐高铁还是传统火车的行为分析}}
+\author{}
+\date{}
+\maketitle
+
+\renewcommand{\abstractname}{\Large 摘要}
+\begin{abstract}
+	本文
+\end{abstract}
+
+\textbf{关键词：；；。}
+
+\newpage
+
+% Fakesection 目录
+
+\pagenumbering{roman}
+
+\tableofcontents
+
+\newpage
+
+\listoffigures
+
+\newpage
+
+\listoftables
+
+\newpage
+
+\setcounter{section}{-1}
+
+\pagenumbering{arabic}
+
+\section{引言}%
+\label{sec:引言}
+
+\subsection{问题背景}%
+\label{sub:问题背景}
+
+\subsection{问题信息}%
+\label{sub:问题信息}
+
+\subsection{问题重述}%
+\label{sub:问题重述}
+
+
+
+\begin{enumerate}
+	\item ；
+	\item 。
+\end{enumerate}
+
+\newpage
+
+\section{问题分析}%
+\label{sec:问题分析}
+
+\subsection{假设}%
+\label{sub:假设}
+
+\subsection{标记}%
+\label{sub:标记}
+
+\begin{table}[htpb]
+	\centering
+	\caption{标记}
+	\label{tab:标记}
+	\begin{tabu}to\linewidth{@{}X[c]X[c]@{}}
+		\toprule
+		变量&定义 \\
+		\midrule
+			& \\
+			\bottomrule
+	\end{tabu}
+
+\end{table}
+
+\subsection{分析}%
+\label{sub:分析}
+
+\subsubsection{题一}%
+\label{ssub:题一}
+
+\newpage
+
+\section{模型1}%
+\label{sec:模型1}
+
+\newpage
+
+\section{模型2}%
+\label{sec:模型2}
+
+\newpage
+
+\section{模型3}%
+\label{sec:模型3}
+
+\newpage
+
+\section{模型的评价与改进}%
+\label{sec:模型的评价与改进}
+
+\subsection{优点}%
+\label{sub:优点}
+
+\subsection{缺点}%
+\label{sub:缺点}
+
+\subsection{改进}%
+\label{sub:改进}
+
+\subsection{推广}%
+\label{sub:推广}
+
+\subsection{展望}%
+\label{sub:展望}
+
+\newpage
+
+% Fakesection 参考文献
+
+\bibliographystyle{IEEEtran}
+%\bibliography{src/main}
+
+% Fakesection 附录
+
+\renewcommand{\thesection}{\Alph{section}~}
+
+\appendix
+
+\section{数据}%
+\label{sec:数据}
+
+\section{代码}%
+\label{sec:代码}
+
+% Fakesection 索引
+
+\printindex
+
+\end{document}
+
