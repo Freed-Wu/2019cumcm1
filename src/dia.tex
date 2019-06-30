@@ -1,0 +1,98 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\RequirePackage{ifxetex}
+\RequireXeTeX
+
+\documentclass[tikz]{standalone}
+
+%颜色
+\usepackage{xcolor}
+
+%长度
+\usepackage{printlen}
+\uselengthunit{mm}
+
+%图形
+\usepackage{pifont}
+\usepackage{ean13isbn}
+\usepackage{qrcode}
+\usepackage{pdfpages}
+\usepackage{overpic}
+\usepackage{graphicx}
+
+\usepackage{pstricks}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usepackage{pgfmath}
+\usepackage{pgf-pie}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{chains}
+\usetikzlibrary{mindmap}
+\usetikzlibrary{graphs}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shadings}
+
+\usepackage{scsnowman}
+\usepackage{circuitikz}
+\usepackage{tikzpeople}
+\usepackage{tikzducks}
+\usepackage{flowchart}
+\usepackage{smartdiagram}
+\usepackage[edges]{forest}
+
+%公式
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{amsopn}
+\usepackage{amstext}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{textcomp}
+\usepackage{latexsym}
+\usepackage{exscale}
+\usepackage{relsize}
+%\usepackage{xymtex}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{hologo}
+\usepackage{cases}
+
+%文字
+\usepackage{csquotes}
+\usepackage{microtype}
+\usepackage{ctex}
+
+\csname
+endofdump
+\endcsname
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1, transform shape]
+	\tikzset{node distance=1.5cm}
+	\node (开始) [draw, align=center, terminal] {开始};
+	\node (输入数据) [draw, align=center, trapezium, trapezium left angle=70, trapezium right angle=110, below of= 开始] {输入数据};
+	\node (聚类分析) [draw, align=center, process, below of= 输入数据] {聚类分析};
+	\node (得到距离较近的因子) [draw, align=center, trapezium, trapezium left angle=70, trapezium right angle=110, below of= 聚类分析] {得到距离较近的因子};
+	\node (对一次项和因子相乘得到的交叉项做最小二乘回归分析) [draw, align=center, process, below of= 得到距离较近的因子] {对一次项和因子相乘\\得到的交叉项做\\最小二乘回归分析};
+	\node (利用回归系数进行预测) [draw, align=center, process, below of= 对一次项和因子相乘得到的交叉项做最小二乘回归分析] {利用回归系数进行预测};
+	\node (结束) [draw, align=center, terminal, below of= 利用回归系数进行预测] {结束};
+	\draw [-Stealth](开始) -- (输入数据);
+	\draw [-Stealth](输入数据) -- (聚类分析);
+	\draw [-Stealth](聚类分析) -- (得到距离较近的因子);
+	\draw [-Stealth](得到距离较近的因子) -- (对一次项和因子相乘得到的交叉项做最小二乘回归分析);
+	\draw [-Stealth](对一次项和因子相乘得到的交叉项做最小二乘回归分析) -- (利用回归系数进行预测);
+	\draw [-Stealth](利用回归系数进行预测) -- (结束);
+\end{tikzpicture}
+
+\end{document}
+

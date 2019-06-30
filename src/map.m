@@ -57,9 +57,6 @@ step=round(max_data/11);
 set(hcb,'YTick',(0:.1:1));
 set(hcb,'YTickLabel',num2cell(0:step:max_data));
 
-% 给图像加标题
-title('中国各省高铁乘客人数/火车乘客人数');
-
 %%out
 fprintf('Running time is %f second.\n', toc)
 
