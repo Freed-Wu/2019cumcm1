@@ -1,5 +1,7 @@
-114-1
-=====
+2019cumcm1
+==========
+
+A backup of my homework. 2019 国赛本校第1次选拔赛。
 
 因为要涉及到多人合作的缘故，有必要把格式和风格的一些冲突的地方统一一下。
 
@@ -118,6 +120,31 @@
 
 > docx 需要另外安装软件。且只能在相同版本下阅读，比如Word2003不能打开Word2010。Word必须在相应版本的Office上运行，如果使用其它软件会变形或者错误，尤其是WPS打开也会比较勉强；
 
+Dependent
+---------
+
+1.  A LaTex distribution. Such as [texlive].
+
+Install
+-------
+
+``` {.zsh}
+git clone git@github.com:Freed-Wu/2019cumcm1
+cd 2019cumcm1
+latexmk -pvc main.tex
+```
+
+Q & A
+-----
+
+More question see [Issues].
+
+If you don't wanna compile, you can download the complied paper from
+[Release]
+
+  [texlive]: https://github.com/TeX-Live/texlive-source
+  [Issues]: https://github.com/Freed-Wu/2019cumcm1/issues
+  [Release]: https://github.com/Freed-Wu/2019cumcm1/releases/
   [中文文案排版指北（简体中文版）]: https://github.com/mzlogin/chinese-copywriting-guidelines
   [知乎]: https://www.zhihu.com/question/27589739
   [公式查看]: http://latex.91maths.com/
